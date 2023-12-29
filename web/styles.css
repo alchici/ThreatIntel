@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+.form-title {
+    text-align: center;
+    color: #0056b3; /* Color del texto */
+    font-size: 2em; /* Tamaño del texto */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+
+#dataForm {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+#dataForm label {
+    display: block;
+    margin-top: 20px;
+    color: #0056b3;
+}
+
+#dataForm select, #dataForm input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#dataForm button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#dataForm button:hover {
+    background-color: #0056b3;
+}
+
+#dataForm ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#dataForm ul li {
+    background-color: #e7f0fd;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 4px;
+    border-left: 4px solid #0056b3;
+    position: relative;
+    white-space: pre-wrap;
+}
+
+#dataForm ul li button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+#dataForm ul li button:hover {
+    background-color: #c82333;
+}
+
+/* General Style for Text Inputs and Textarea */
+#dataForm input[type="text"], #dataForm textarea {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Focus Style */
+#dataForm input[type="text"]:focus, #dataForm textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Hover Style */
+#dataForm input[type="text"]:hover, #dataForm textarea:hover {
+    border-color: #a0a0a0;
+}
+
+/* Responsive Sizing */
+@media (max-width: 600px) {
+    #dataForm input[type="text"], #dataForm textarea {
+        width: calc(100% - 30px);
+    }
+}
+
+

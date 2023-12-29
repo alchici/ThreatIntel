@@ -1,0 +1,6 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Description}{}{section.1}%
+\contentsline {section}{\numberline {2}APT Groups}{}{section.2}%
+\contentsline {section}{\numberline {3}MITRE tactics, techniques and procedures}{}{section.3}%
+\contentsline {section}{\numberline {4}Indicators of compromise}{}{section.4}%
+\contentsline {section}{\numberline {5}MITRE Kill Chain}{}{section.5}%

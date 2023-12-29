@@ -1,0 +1,43 @@
+% Inicio Portada Sección
+\ClearShipoutPictureBG
+\mbox{}
+\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{fondos/fondo_secciones.png}}
+\begin{textblock*}{15cm}(2cm,14cm)
+    \huge{\textcolor{letras_blancas}{\textbf{Report}}}
+\end{textblock*}
+\newpage
+% Fin Portada Sección
+\newlength\mylength
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+%\newcommand{\hash}[1]{{\ttfamily\seqsplit{#1}}}
+
+\renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi}
+\newcommand{\wrap}[1]{\seqinsert{\seqsplit{#1}}}
+
+% ------------------------------------- CONTENIDO ------------------------------------
+\AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{fondos/fondo_normal.jpg}}
+
+\section{Description}
+
+DESCRIPTION
+
+\section{APT Groups}
+
+APT Groups associated with the provided intelligence:
+
+GROUPS
+
+\section{MITRE tactics, techniques and procedures}
+
+TTP
+
+\section{Indicators of compromise}
+
+IOCS
+
+\section{MITRE Kill Chain}
+
+KILLCHAIN
+
+\clearpage
+% ------------------------------------- FIN CONTENIDO --------------------------------
