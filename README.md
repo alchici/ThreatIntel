@@ -13,6 +13,8 @@ Para construir la imagen Docker llamada "threatintel", ejecuta el siguiente coma
 ```bash
 sudo docker build -t threatintel .
 ```
+Durante la creación de la imagen de Docker, se descargan las dependencias necesarias para compilar LaTeX, lo que podría prolongar el proceso de construcción en un lapso de 5 a 10 minutos, dependiendo de la velocidad de descarga.
+
 ## Ejecutar la imagen Docker
 
 Para ejecutar la imagen Docker llamada "threatintel", ejecuta el siguiente comando en el directorio raíz del proyecto:
@@ -23,4 +25,4 @@ sudo docker run -p 80:80 -p 8000:8000 threatintel
 
 ## Uso de la herramienta
 
-Simplemente, acceder con el navegador a localhost:80
+Acceder con el navegador a localhost:80
